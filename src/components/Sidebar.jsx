@@ -1,21 +1,35 @@
-import { AccountBox, Article, Groups, Home, Person, Settings, Storefront } from '@mui/icons-material'
-import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
-import React from 'react'
+import {
+  AccountBox,
+  Article,
+  Groups,
+  Home,
+  ModeNight,
+  Person,
+  Settings,
+  Storefront,
+} from "@mui/icons-material";
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Switch,
+} from "@mui/material";
+import React from "react";
 
-function Sidebar() {
+function Sidebar({ mode, setMode }) {
   return (
-    <Box 
-        flex={1} 
-        p={2} 
-        sx={{display: {xs: "none", sm: "block"}}}
-    >
+    <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
+      <Box position="fixed">
         <List>
           <ListItem disablePadding>
             <ListItemButton component="a" href="#home">
               <ListItemIcon>
                 <Home />
-                </ListItemIcon>
-                <ListItemText primary="Homepage"/>
+              </ListItemIcon>
+              <ListItemText primary="Homepage" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
@@ -66,9 +80,20 @@ function Sidebar() {
               <ListItemText primary="Profile" />
             </ListItemButton>
           </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <ModeNight />
+              </ListItemIcon>
+              <Switch
+                onChange={() => setMode(mode === "light" ? "dark" : "light")}
+              />
+            </ListItemButton>
+          </ListItem>
         </List>
+      </Box>
     </Box>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;
